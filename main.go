@@ -50,7 +50,7 @@ func fetch(n int) (*Result, error) {
 	if resp.StatusCode != http.StatusOK {
 		data = Result{}
 	} else {
-		if err := json.NewDecoder(req.Body).Decode(&data); err != nil {
+		if err := json.NewDecoder(resp.Body).Decode(&data); err != nil {
 			return nil, fmt.Errorf("json err: %v", err)
 		}
 	}
